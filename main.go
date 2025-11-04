@@ -16,6 +16,13 @@ import (
 	"github.com/golang/geo/s2"
 )
 
+var enbyFlag = []color.Color{
+	color.NRGBA{R: 0xff, G: 0xf4, B: 0x2f, A: 0xff},
+	color.White,
+	color.NRGBA{R: 0x9c, G: 0x59, B: 0xd1, A: 0xff},
+	color.NRGBA{R: 0x29, G: 0x29, B: 0x29, A: 0xff},
+}
+
 type Theme interface {
 	CreateTileProvider() *sm.TileProvider
 	GetColorExact() color.Color
@@ -323,11 +330,41 @@ func renderMap(options Options, data Data) error {
 		return fmt.Errorf("error rendering map: %w", err)
 	}
 
-	if err := gg.SavePNG(options.OutputFile, img); err != nil {
+	gctx := gg.NewContextForImage(img)
+
+	if !options.HideAttribution {
+		addEnbyFlag(options, gctx)
+	}
+
+	if err := gctx.SavePNG(options.OutputFile); err != nil {
 		return fmt.Errorf("error saving PNG: %w", err)
 	}
 
 	return nil
+}
+
+func addEnbyFlag(options Options, gctx *gg.Context) {
+	cw := float64(gctx.Width())
+	ch := float64(gctx.Height())
+
+	boxHeight := gctx.FontHeight() + 4.
+	width := 20.
+	stripeHeight := boxHeight / 4.
+
+	for i, color := range enbyFlag {
+		gctx.SetColor(color)
+		gctx.DrawRectangle(cw-width, ch-boxHeight+stripeHeight*float64(i), width, stripeHeight)
+		gctx.Fill()
+	}
+
+	// Dim the flag a bit
+	dimAlpha := 0x05
+	if options.Dark {
+		dimAlpha = 0x20
+	}
+	gctx.SetColor(color.NRGBA{A: uint8(dimAlpha)})
+	gctx.DrawRectangle(cw-width, ch-boxHeight, width, boxHeight)
+	gctx.Fill()
 }
 
 func addStationCircle(theme Theme, ctx *sm.Context, lat, lon float64) {
