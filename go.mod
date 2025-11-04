@@ -1,0 +1,20 @@
+module mica.lgbt/tlynxmap
+
+go 1.24.5
+
+require (
+	github.com/flopp/go-staticmaps v0.0.0-20250629121348-973b17999e19
+	github.com/fogleman/gg v1.3.0
+	github.com/golang/geo v0.0.0-20250627182359-f4b81656db99
+)
+
+require (
+	github.com/flopp/go-coordsparser v0.0.0-20250311184423-61a7ff62d17c // indirect
+	github.com/golang/freetype v0.0.0-20170609003504-e2365dfdc4a0 // indirect
+	github.com/mazznoer/csscolorparser v0.1.6 // indirect
+	github.com/tkrajina/gpxgo v1.4.0 // indirect
+	golang.org/x/image v0.28.0 // indirect
+	golang.org/x/net v0.33.0 // indirect
+	golang.org/x/text v0.26.0 // indirect
+	gopkg.in/yaml.v3 v3.0.1 // indirect
+)
