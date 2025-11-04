@@ -6,6 +6,10 @@ Optionally, it can filter by time and exclude certain stations. A rendered image
 
 ![A map centered on Germany showing various journeys between Passau, Frankfurt, Karlsruhe, Bonn, Aachen, and some reaching into the Netherlands in Utrecht, Amsterdam, and Almere. The bottom is captioned "Maps and Data (c) openstreetmap.org and contributors, ODbL, rendered using tlynxmap". The lower right corner features an enby flag.](./example.png)
 
+Or, in dark mode:
+
+![The same map as above, but in dark mode. The attribution string is different: "Map (c) Carto [CC BY 3.0] Data (c) OSM and contributors, ODbL., rendered using tlynxmap".](./example-dark.png)
+
 ## Building
 
 ```sh
