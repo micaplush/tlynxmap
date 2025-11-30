@@ -312,7 +312,7 @@ func renderMap(options Options, data Data) error {
 			}
 		}
 
-		path := sm.NewPath(lls, col, 2)
+		path := sm.NewPath(lls, col, 2.5)
 		ctx.AddObject(path)
 	}
 
