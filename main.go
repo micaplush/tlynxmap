@@ -369,7 +369,7 @@ func addEnbyFlag(options Options, gctx *gg.Context) {
 
 func addStationCircle(theme Theme, ctx *sm.Context, lat, lon float64) {
 	ll := s2.LatLngFromDegrees(lat, lon)
-	ctx.AddObject(sm.NewCircle(ll, color.Transparent, theme.GetColorStation(), 3000, 1))
+	ctx.AddObject(sm.NewCircle(ll, color.Transparent, theme.GetColorStation(), 2000, 1))
 }
 
 func run() error {
